@@ -12,3 +12,124 @@ code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
 }
+
+.App {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  font-family: sans-serif;
+}
+
+input {
+  border: 1px solid transparent;
+  background-color: #f1f1f1;
+  padding: 10px;
+  font-size: 16px;
+  margin: 7px;
+  border-radius: 3%;
+}
+input[type=text] {
+  background-color: #f1f1f1;
+  width: 85%;
+}
+input[type=password] {
+  background-color: #f1f1f1;
+  width: 85%;
+}
+input[type=submit] {
+  background-color: dodgerblue;
+  color: #fff;
+}
+input[type=button] {
+  background-color: dodgerblue;
+  color: black;
+}
+.success {
+  color: green;
+  background-color: white;
+  border-radius: 3%;
+  border: 2px solid green;
+  padding: 8px;
+  width: 90%;
+  margin: 10px;
+  position: absolute;
+  top: 60px;
+  z-index: 1;
+}
+.failure {
+  color: red;
+  background-color: white;
+  border-radius: 3%;
+  border: 2px solid red;
+  padding: 8px;
+  width: 90%;
+  margin: 10px;
+  position: absolute;
+  top: 60px;
+  z-index: 1;
+}
+
+nav {
+  /* border: 1px solid red; */
+  display: flex;
+  flex-direction: column;
+  border-top: 5px solid chocolate;
+  border-bottom: 5px solid chocolate;
+  background-color: dodgerblue;
+  width: 99%;
+  height: 50px;
+}
+
+.navLeft {
+  color: brown;
+  position: absolute;
+  left: 10px;
+  top: 20px;
+  font-size: 20px;
+  font-weight: bolder;
+}
+.navRight {
+  color: brown;
+  position: absolute;
+  right: 10px;
+  top: 20px;
+  font-size: 20px;
+  font-weight: bolder;
+}
+
+label {
+  display: flex;
+  margin: 7px 7px 7px 24px;
+  font: 16px sans-serif;
+}
+
+a {
+  color: whitesmoke;
+  text-decoration: none;
+  background-color: chocolate;
+  padding: 6px;
+  margin: 5px;
+}
+
+.signupPage, .loginPage {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-image: url(https://singularityhub.com/wp-content/uploads/2019/07/Dark-forest-background.-Karelia-forest-trees-900x506.jpg);
+  background-repeat: no-repeat;
+  background-size: contain;
+  width: 99%;
+  height: 800px;
+}
+.signupForm, .loginForm {
+  display: flex;
+  flex-direction: column;
+  color: whitesmoke;
+  background-color: chocolate;
+  padding: 10px;
+  width: 50%;
+  height: auto;
+  position: absolute;
+  top: 13%;
+}
