@@ -11,6 +11,7 @@ import Home from './pages/Home';
 import Signup from './pages/Signup';
 import Login from './pages/Login';
 import Profile from './pages/Profile';
+import ProjectDetails from './pages/ProjectDetails';
 
 // components
 import NavBar from './components/NavBar';
@@ -42,17 +43,24 @@ function App() {
     <div className="App">
 
       <NavBar />
-      <Messages />
 
-      {/* ===============  ROUTES  ===============  */}
+      <div className="mainPage">
+        <Messages />
+        
+        {/* ===============  ROUTES  ===============  */}
 
-      <Route exact path="/" render={() => <Home />} />
+        <Route exact path="/" render={() => <Home />} />
 
-      <Route exact path="/signup" render={() => {if (user.id) {return <Redirect to="/profile"/>} else {return <Signup setUser={setUser}/>}}}/>
+        <Route exact path="/signup" render={() => {if (user.id) {return <Redirect to="/profile"/>} else {return <Signup setUser={setUser}/>}}}/>
 
-      <Route exact path="/login" render={() => {if (user.id) {return <Redirect to="/profile"/>} else {return <Login setUser={setUser}/>}}}/>
+        <Route exact path="/login" render={() => {if (user.id) {return <Redirect to="/profile"/>} else {return <Login setUser={setUser}/>}}}/>
 
-      <Route exact path="/profile" render={() => {if (user.id) {return <Profile />} else {return <Redirect to="/login"/>}}}/>
+        <Route exact path="/profile" render={() => {if (user.id) {return <Profile />} else {return <Redirect to="/login"/>}}}/>
+
+        <Route exact path="/projects/:id" render={(props) => {if (user.id) {
+          return <ProjectDetails projectId={props.match.params.id} />;
+        } else {return <Redirect to="/login"/>}}}/>
+      </div>
 
     </div>
   );

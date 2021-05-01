@@ -1,7 +1,8 @@
-// contexts
 import { useState, useEffect, useContext } from 'react';
 import { MessageContext } from '../contexts/MessageContext';
 import { UserContext } from '../contexts/UserContext';
+import AccountInfo from '../components/AccountInfo';
+import ProjectInfo from '../components/ProjectInfo';
 
 const Profile = () =>
 {
@@ -9,16 +10,26 @@ const Profile = () =>
     const {userState, verifyUser } = useContext(UserContext);
     const [user, setUser] = userState;
     const { displayMessage, clearMessage } = useContext(MessageContext);
+
+    // states
+    const [display, setDisplay] = useState('');
     
     // on component load
-    useEffect(clearMessage, []);
+    useEffect(clearMessage, [display]);
+
+    // functions
 
     return (
-        <div>
-            <h1>{user.name}'s Profile</h1>
-            <div>
-                
+        <div className="profilePage">
+            <div key="profileMenu" className="profileMenu">
+                <div key="account" className="menuItem">
+                    <h4 onClick={() => {setDisplay('account')}}>Account</h4>
+                </div>
+                <div key="projects" className="menuItem">
+                    <h4 onClick={() => {setDisplay('projects')}}>Projects</h4>
+                </div>
             </div>
+            {display === 'account' ? <AccountInfo /> : <ProjectInfo />}
         </div>
     )
 }

@@ -21,6 +21,17 @@ code {
   font-family: sans-serif;
 }
 
+.mainPage {
+  background-image: url(https://singularityhub.com/wp-content/uploads/2019/07/Dark-forest-background.-Karelia-forest-trees-900x506.jpg);
+  background-repeat: no-repeat;
+  background-size: contain;
+  width: 99%;
+  height: 800px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
 input {
   border: 1px solid transparent;
   background-color: #f1f1f1;
@@ -40,11 +51,24 @@ input[type=password] {
 input[type=submit] {
   background-color: dodgerblue;
   color: #fff;
+  border-radius: 12%;
 }
 input[type=button] {
   background-color: dodgerblue;
   color: black;
+  border-radius: 12%;
 }
+input[type=submit]:hover {
+  cursor: pointer;
+  color: whitesmoke;
+  background-color: #003152;
+}
+input[type=button]:hover {
+  cursor: pointer;
+  color: whitesmoke;
+  background-color: #003152;
+}
+
 .success {
   color: green;
   background-color: white;
@@ -110,6 +134,15 @@ a {
   background-color: chocolate;
   padding: 6px;
   margin: 5px;
+  border-radius: 8%;
+}
+
+.welcomeSign {
+  background-color: chocolate;
+  color: whitesmoke;
+  padding: 1px 30px 1px 30px;
+  margin: 15px;
+  border-radius: 7%;
 }
 
 .signupPage, .loginPage {
@@ -121,6 +154,7 @@ a {
   background-size: contain;
   width: 99%;
   height: 800px;
+  border-radius: 3%;
 }
 .signupForm, .loginForm {
   display: flex;
@@ -128,8 +162,68 @@ a {
   color: whitesmoke;
   background-color: chocolate;
   padding: 10px;
-  width: 50%;
+  width: 30%;
   height: auto;
   position: absolute;
   top: 13%;
+  border-radius: 3%;
+}
+
+.profilePage {
+  background-color: chocolate;
+  color: whitesmoke;
+  width: 80%;
+  height: 90%;
+  margin: 30px 0 0 0;
+  border-radius: 3%;
+  display: flex;
+  align-items: center;
+}
+.profileMenu {
+  border-right: 2px solid whitesmoke;
+  width: 15%;
+  height: 90%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+.menuItem {
+  border: 2px solid whitesmoke;
+  border-radius: 2%;
+  width: 85%;
+  height: 7.5%;
+  margin: 7px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.menuItem:hover {
+  cursor: pointer;
+}
+
+.profileDisplay {
+  border: 2px solid whitesmoke;
+  border-radius: 2%;
+  width: 75%;
+  height: 90%;
+  margin: 0 0 0 5%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.profileInfo {
+  width: 40%;
+  height: 20%;
+  display: flex;
+  justify-content: space-evenly;
+  align-items: center;
+  font-size: 20px;
+}
+#editInfo {
+  width: 7%;
+}
+
+.userProject:hover {
+  cursor: pointer;
 }

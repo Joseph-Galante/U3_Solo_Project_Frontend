@@ -36,7 +36,7 @@ const Signup = () =>
             password: password
         }).then((res) =>
         {
-            console.log(res);
+            // console.log(res);
             setUser({ id: res.data.user.id, name: res.data.user.name, email: res.data.user.email });
             localStorage.setItem('userId', res.data.user.id);
         }).catch((error) =>

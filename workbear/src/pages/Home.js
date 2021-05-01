@@ -10,8 +10,10 @@ const Home = () =>
     useEffect(clearMessage, []);
 
     return (
-        <div>
-            <h1 style={{ fontSize: "48px", fontWeight: "bolder" }}>Welcome to WorkBear</h1>
+        <div className="homePage">
+            <div className="welcomeSign">
+                <h1 style={{ fontSize: "48px", fontWeight: "bolder" }}>Welcome to WorkBear</h1>
+            </div>
         </div>
     )
 }

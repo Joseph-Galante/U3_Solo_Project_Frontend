@@ -21,7 +21,7 @@ const UserProvider = ({children}) =>
             // console.log(res);
             if(res.data.user)
             {
-                setUser({ id: res.data.user.id, email: res.data.user.email });
+                setUser({ id: res.data.user.id, name: res.data.user.name, email: res.data.user.email });
             }
             }).catch((error) =>
             {
