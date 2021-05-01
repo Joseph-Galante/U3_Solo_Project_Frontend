@@ -12,6 +12,7 @@ import Signup from './pages/Signup';
 import Login from './pages/Login';
 import Profile from './pages/Profile';
 import ProjectDetails from './pages/ProjectDetails';
+import Projects from './pages/Projects';
 
 // components
 import NavBar from './components/NavBar';
@@ -33,7 +34,7 @@ function App() {
 
 
   // states
-
+  
 
   // functions
   useEffect(verifyUser, []);
@@ -56,6 +57,8 @@ function App() {
         <Route exact path="/login" render={() => {if (user.id) {return <Redirect to="/profile"/>} else {return <Login setUser={setUser}/>}}}/>
 
         <Route exact path="/profile" render={() => {if (user.id) {return <Profile />} else {return <Redirect to="/login"/>}}}/>
+
+        <Route exact path="/projects" render={() => {if (user.id) {return <Projects />} else {return <Redirect to="/login"/>}}}/>
 
         <Route exact path="/projects/:id" render={(props) => {if (user.id) {
           return <ProjectDetails projectId={props.match.params.id} />;

@@ -20,15 +20,15 @@ const ProjectDetails = (props) =>
     useEffect(getProjectDetails, []);
 
     return (
-        <div>
+        <div className="projectDetailsPage">
             {project ?
                 <div>
                     <h1>{project.title}</h1>
                     <h3>{project.description}</h3>
                     <h2>Collaborators:</h2>
-                    <h3>{project.users ? project.users.map((user) => {return (<div>{user.name}<br></br></div>)}) : null}</h3>
+                    <h3>{project.users ? project.users.map((user) => {return (<div key={user.id}>{user.name}<br></br></div>)}) : null}</h3>
                     <h2>Due:</h2>
-                    <h3>{project.dueDate ? `${project.dueDate.slice(0, 2)}-${project.dueDate.slice(2, 4)}-${project.dueDate.slice(4, 6)} @ ${project.dueDate.slice(7, 12)}` : 'No Due Date'}</h3>
+                    <h3>{project.dueDate ? project.dueDate : 'No Due Date'}</h3>
                 </div>
                 :
                 <div>Loading project...</div>

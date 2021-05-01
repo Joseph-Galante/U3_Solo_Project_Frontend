@@ -201,6 +201,7 @@ a {
   cursor: pointer;
 }
 
+
 .profileDisplay {
   border: 2px solid whitesmoke;
   border-radius: 2%;
@@ -224,6 +225,67 @@ a {
   width: 7%;
 }
 
+.projectInfo {
+  width: 90%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.userProject {
+  border: 2px solid whitesmoke;
+  border-radius: 2%;
+  width: 85%;
+  height: 7.5%;
+  margin: 7px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 7px;
+}
 .userProject:hover {
   cursor: pointer;
+}
+.userProjectProfile {
+  border: 2px solid whitesmoke;
+  border-radius: 2%;
+  width: 90%;
+  height: 7.5%;
+  margin: 7px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 20px;
+}
+.userProjectProfile:hover {
+  cursor: pointer;
+}
+
+.projectsPage, .projectDetailsPage {
+  display: flex;
+  color: whitesmoke;
+  background-color: chocolate;
+  padding: 20px;
+  width: 50%;
+  height: auto;
+  position: absolute;
+  top: 13%;
+  border-radius: 3%;
+}
+.myProjects, .createProject {
+  border: 2px solid whitesmoke;
+  border-radius: 2%;
+  width: 45%;
+  height: 90%;
+  margin: 0 0 0 2.5%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 10px;
+}
+
+.dueDateSpan {
+  display: flex;
+}
+input[type=number] {
+  width: 40px;
 }

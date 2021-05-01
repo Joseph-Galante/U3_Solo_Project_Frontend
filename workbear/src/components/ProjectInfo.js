@@ -27,7 +27,7 @@ const ProjectInfo = () =>
             const projects = res.data.projects.map((project) =>
             {
                 return (
-                    <div key={project.id} className="userProject" onClick={() => {setShouldRedirect(project.id)}}>
+                    <div key={project.id} className="userProjectProfile" onClick={() => {setShouldRedirect(project.id)}}>
                         <span>{project.title} - {project.description} | Due: {project.dueDate}</span>
                     </div>
                 )
