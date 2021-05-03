@@ -245,7 +245,7 @@ a {
 .userProject:hover {
   cursor: pointer;
 }
-.userProjectProfile {
+.userProjectProfile, .userTaskProfile, .task, .invite {
   border: 2px solid whitesmoke;
   border-radius: 2%;
   width: 90%;
@@ -256,12 +256,13 @@ a {
   align-items: center;
   padding: 20px;
 }
-.userProjectProfile:hover {
+.userProjectProfile:hover, .userTaskProfile:hover, .task:hover {
   cursor: pointer;
 }
 
-.projectsPage, .projectDetailsPage {
+.projectsPage, .projectDetailsPage, .taskDetailsPage, .invitePage {
   display: flex;
+  justify-content: center;
   color: whitesmoke;
   background-color: chocolate;
   padding: 20px;
@@ -276,7 +277,7 @@ a {
   border-radius: 2%;
   width: 45%;
   height: 90%;
-  margin: 0 0 0 2.5%;
+  margin: 0 2% 0 2%;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -288,4 +289,61 @@ a {
 }
 input[type=number] {
   width: 40px;
+}
+
+.projectDetails {
+  border: 2px solid whitesmoke;
+  width: 90%;
+  height: 90%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.collabSection {
+  border: 2px solid whitesmoke;
+}
+
+.taskDetails {
+  border: 2px solid whitesmoke;
+  border-radius: 2%;
+  width: 90%;
+  height: 90%;
+  margin: 0 2% 0 2%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 10px;
+}
+
+#backToProject {
+  background-color: whitesmoke;
+}
+#backToProject:hover {
+  background-color: black;
+}
+
+.inviteInfo {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+.invite {
+  background-color: whitesmoke;
+  color: black;
+  padding: 25px;
+  width: 80%;
+}
+.replyChoices {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 50%;
+}
+#replyAccept {
+  background-color: forestgreen;
+}
+#replyDecline {
+  background-color: red;
 }

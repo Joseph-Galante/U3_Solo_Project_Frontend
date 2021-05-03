@@ -5,7 +5,7 @@ import { UserContext } from '../contexts/UserContext';
 import axios from 'axios';
 import env from 'react-dotenv';
 
-const ProjectInfo = () =>
+const TaskInfo = () =>
 {
     // contexts
     const {userState, verifyUser } = useContext(UserContext);
@@ -13,7 +13,7 @@ const ProjectInfo = () =>
     const { displayMessage, clearMessage } = useContext(MessageContext);
 
     // states
-    const [projects, setProjects] = useState(null);
+    const [tasks, setTasks] = useState([]);
     const [shouldRedirect, setShouldRedirect] = useState('');
 
     // on component load
@@ -21,35 +21,35 @@ const ProjectInfo = () =>
 
     // functions
     
-    // get user's projects
-    const getMyProjects = () =>
+    // get user's tasks
+    const getMyTasks = () =>
     {
-        axios.get(`${env.BACKEND_URL}/projects`, { headers: { Authorization: user.id }}).then((res) =>
+        axios.get(`${env.BACKEND_URL}/tasks`, { headers: { Authorization: user.id }}).then((res) =>
         {
             // console.log(res);
-            const projects = res.data.projects.map((project) =>
+            const tasks = res.data.tasks.map((task) =>
             {
                 return (
-                    <div key={project.id} className="userProjectProfile" onClick={() => {setShouldRedirect(project.id)}}>
-                        <span>{project.title} - {project.description} | Due: {project.dueDate}</span>
+                    <div key={task.id} className="userTaskProfile" onClick={() => {setShouldRedirect(task.id)}}>
+                        <span>{task.description} | Due: {task.dueDate}</span>
                     </div>
                 )
             })
-            setProjects(projects);
+            setTasks(tasks);
         }).catch((error) => console.log(error.message));
     }
-    useEffect(getMyProjects, []);
+    useEffect(getMyTasks, []);
 
     return (
         <div key="profileDisplay" className="profileDisplay">
-            {shouldRedirect !== '' ? <Redirect to={`/projects/${shouldRedirect}`}/> : null}
-            <h1 className="profileHeader">Projects</h1>
+            {shouldRedirect !== '' ? <Redirect to={`/tasks/${shouldRedirect}`}/> : null}
+            <h1 className="profileHeader">Tasks</h1>
             <span>------------------------------------------------------</span>
             <div className="projectInfo">
-                {projects ? projects : <span>Getting projects...</span>}
+                {tasks ? tasks.length === 0 ? 'No tasks' : tasks : <span>Getting tasks...</span>}
             </div>
         </div>
     )
 }
 
-export default ProjectInfo;
+export default TaskInfo;

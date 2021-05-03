@@ -16,6 +16,9 @@ const AccountInfo = () =>
     const [name, setName] = useState('');
     const [email, setEmail] = useState('');
 
+    // on component load
+    useEffect(clearMessage, []);
+
     // functions
     const saveChanges = () =>
     {

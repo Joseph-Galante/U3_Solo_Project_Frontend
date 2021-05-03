@@ -12,6 +12,7 @@ import Signup from './pages/Signup';
 import Login from './pages/Login';
 import Profile from './pages/Profile';
 import ProjectDetails from './pages/ProjectDetails';
+import TaskDetails from './pages/TaskDetails';
 import Projects from './pages/Projects';
 
 // components
@@ -32,7 +33,6 @@ function App() {
   const { messageState, clearMessage } = useContext(MessageContext);
   const [ message, setMessage ] = messageState;
 
-
   // states
   
 
@@ -50,7 +50,7 @@ function App() {
         
         {/* ===============  ROUTES  ===============  */}
 
-        <Route exact path="/" render={() => <Home />} />
+        <Route exact path="/" render={() => {if (user.id) {return <Redirect to="/profile" />} else { return <Home />}}} />
 
         <Route exact path="/signup" render={() => {if (user.id) {return <Redirect to="/profile"/>} else {return <Signup setUser={setUser}/>}}}/>
 
@@ -62,6 +62,10 @@ function App() {
 
         <Route exact path="/projects/:id" render={(props) => {if (user.id) {
           return <ProjectDetails projectId={props.match.params.id} />;
+        } else {return <Redirect to="/login"/>}}}/>
+        
+        <Route exact path="/tasks/:id" render={(props) => {if (user.id) {
+          return <TaskDetails taskId={props.match.params.id} />;
         } else {return <Redirect to="/login"/>}}}/>
       </div>
 
