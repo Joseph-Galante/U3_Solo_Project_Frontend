@@ -18,31 +18,39 @@ const Task = (props) =>
     const [assigned, setAssigned] = useState({});
     const [shouldRedirect, setShouldRedirect] = useState('');
 
+    // on component load
+    useEffect(clearMessage, []);
+
     // functions
     const assignTask = (email) =>
     {
-        axios.post(`${env.BACKEND_URL}/tasks/${props.task[0].id}/assign`, { email }, { headers: { Authorization: user.id }}).then((res) =>
+        axios.post(`${env.BACKEND_URL}/tasks/${props.task.id}/assign`, { email: email }, { headers: { Authorization: user.id }}).then((res) =>
         {
-            // console.log(res);
+            console.log(res);
+            setAssigned(email);
             displayMessage(true, `${email} has been assigned to task successfully.`);
+            props.getProject();
         }).catch(error => console.log(error.message));
     }
 
     return (
-        <div className="task" onClick={() => {setShouldRedirect(props.task[0].id)}}>
+        <div className="task" style={props.task.completed ? {backgroundColor: 'dodgerblue'} : {backgroundColor: 'black'}}>
             {shouldRedirect !== '' ? <Redirect to={`/tasks/${shouldRedirect}`}/> : null}
-            <span>
-                {/* {console.log(props.task[0])} */}
+            <span className="taskInfo">
+                {/* {console.log(props.task)} */}
                 { props.task ?
                 <>
-                    <span>{props.task[0].description ? props.task[0].description : 'Project Task'} | Assigned to: </span>
-                    {
-                    user.email === props.users[0].email ?
-                        <Dropdown  options={props.users ? props.users.map(user => {return `${user.name}`}) : 'TBD'} onChange={(e) => {setAssigned(e.value); assignTask(e.value)}} value={props.task[0].user ? props.task[0].user.name : assigned.name} placeholder='TBD' />
-                    :
-                        
-                        <input type="button" value="Assign Self" onClick={() => {assignTask(user.email)}}/>
-                    }
+                    <span className="taskStamp">
+                        <span>Assigned to: </span>
+                        {
+                        user.email === props.users[0].email ?
+                            <Dropdown options={props.users ? props.users.map(user => {return `${user.name}`}) : 'TBD'} onChange={(e) => {assignTask(e.value)}} value={props.task.user ? props.task.user.name : assigned.name} placeholder='TBD' />
+                        :
+                            props.task.user ? props.task.user.name :
+                            <input type="button" id="assignSelf" value="Assign Self" onClick={() => {assignTask(user.email)}}/>
+                        }
+                    </span>
+                    <span onClick={() => {setShouldRedirect(props.task.id)}}>{props.task.description ? props.task.description : 'Project Task'}</span>
                 </>
                 :
                 'Loading task...'

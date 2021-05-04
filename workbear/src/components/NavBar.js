@@ -22,22 +22,22 @@ const NavBar = () =>
             {user.id ?
                 <span>
                     <span className="navLeft">
-                        <Link to="/">Home</Link>{' | '}
-                        <Link to="/projects">Projects</Link>
+                        <Link className="navLink" to="/">Home</Link>{' | '}
+                        <Link className="navLink" to="/projects">Projects</Link>
                     </span>
                     <span className="navRight">
-                        <Link to="/profile">Profile</Link>{' | '}
-                        <Link to="/" onClick={logoutUser}>Logout</Link>
+                        <Link className="navLink" to="/profile">Profile</Link>{' | '}
+                        <Link className="navLink" to="/" onClick={logoutUser}>Logout</Link>
                     </span>
                 </span>
                 :
                 <span>
                     <span className="navLeft">
-                        <Link to="/">Home</Link>
+                        <Link className="navLink" to="/">Home</Link>
                     </span>
                     <span className="navRight">
-                        <Link to="/signup">Signup</Link>{' | '}
-                        <Link to="/login">Login</Link>
+                        <Link className="navLink" to="/signup">Signup</Link>{' | '}
+                        <Link className="navLink" to="/login">Login</Link>
                     </span>
                 </span>
             }

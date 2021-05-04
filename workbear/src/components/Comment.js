@@ -19,8 +19,11 @@ const Comment = (props) =>
                 { props.comment ?
                 <>
                     <span>
-                        <div className="commentStamp">{props.comment[0].users[0].name}</div>
-                        {props.comment[0].description ? props.comment[0].description : 'Task Comment'}
+                        <span className="commentStamp">
+                            <span className="commentStampName">{props.comment.user.name}</span>
+                            <span className="commentStampTime">{`${props.comment.createdAt.slice(5, 7)}-${props.comment.createdAt.slice(8, 10)}-${props.comment.createdAt.slice(2, 4)}`}</span>
+                        </span>
+                        {props.comment.description ? props.comment.description : 'Task Comment'}
                     </span>
                 </>
                 :

@@ -17,6 +17,8 @@ const ProjectDetails = (props) =>
     const [project, setProject] = useState({});
     const [taskId, setTaskId] = useState(null);
     const [inviting, setInviting] = useState(false);
+    const [tasking, setTasking] = useState(false);
+    const [description, setDescription] = useState('');
 
     // on component load
     useEffect(clearMessage, []);
@@ -32,14 +34,6 @@ const ProjectDetails = (props) =>
     }
     useEffect(getProjectDetails, []);
 
-    const getTask = (taskId) =>
-    {
-        return project.tasks.map(task =>
-        {
-            return task.id === taskId ? task : null
-        })
-    }
-
     const inviteCollaborator = (e) =>
     {
         e.preventDefault();
@@ -48,6 +42,7 @@ const ProjectDetails = (props) =>
         {
             console.log(res);
             displayMessage(true, 'Collaboration invite sent.');
+            getProjectDetails();
             setInviting(false);
         }).catch(error => 
         {
@@ -58,6 +53,18 @@ const ProjectDetails = (props) =>
                 displayMessage(false, 'User has already been invited to this project.');
             }
         })
+    }
+
+    const addTask = (e) =>
+    {
+        e.preventDefault();
+        // console.log(description);
+        axios.post(`${env.BACKEND_URL}/projects/${project.id}/tasks`, { description }, { headers: { Authorization: user.id }}).then(res =>
+        {
+            console.log(res);
+            getProjectDetails();
+            setTasking(false);
+        }).catch(error => console.log(error.message))
     }
 
     return (
@@ -73,7 +80,7 @@ const ProjectDetails = (props) =>
                         <div></div>
                         <input id="email" type="text" value={email} placeholder="Email" onChange={(e) => {setEmail(e.target.value)}}/>
                     </div>
-                    <input type="button" value="Send Invite" onClick={inviteCollaborator}/>
+                    <input type="submit" value="Send Invite" onClick={inviteCollaborator}/>
                 </form>
             </div>
             :
@@ -84,29 +91,55 @@ const ProjectDetails = (props) =>
                         <h1>{project.title}</h1>
                         <h3>{project.description} | Due: {project.dueDate ? project.dueDate : 'TBD'}</h3>
                         <div className="collaborators">
-                            <h2>Collaborators:</h2>
+                            <span className="collabBar">
+                                <h2>Collaborators:</h2>
+                                <input type="button" value="Add Collaborator" onClick={() => {setInviting(true)}}/>
+                            </span>
                             <div className="collabSection">
                                 <div className="collaborator">
                                     <h4>{project.users ? project.users.map((user) => {return (<div key={user.id}>{user.name}<br></br></div>)}) : null}</h4>
                                 </div>
                             </div>
-                            <input type="button" value="Add Collaborator" onClick={() => {setInviting(true)}}/>
                         </div>
                         <div className="tasks">
-                            <h4>Tasks:</h4>
-                            <>
-                                {project.tasks ? 
-                                    project.tasks.length === 0 ?  
-                                        'No tasks' 
-                                        : 
-                                        project.tasks.map(task =>
-                                        {
-                                            return <Task key={task.id} users={project.users} task={getTask(task.id)} />
-                                        })
+                            <span className="tasksBar">
+                                <h4>Tasks:</h4>
+                                <input type="button" value="Add Task" onClick={() => {setTasking(true)}} />
+                            </span>
+                            <div className="taskSection">
+                            {
+                                tasking ? 
+                                    <form>
+                                        <div key="taskDescription">
+                                            <input type="text" id="taskDescription" value={description} placeholder="Task" onChange={(e) => {setDescription(e.target.value)}}/>
+                                        </div>
+                                        <input type="submit" id="cancelTask" value="Cancel" onClick={() => {setDescription(''); setTasking(false)}} />
+                                        <input type="submit" id="addTask" value="Add Task" onClick={addTask} />
+                                    </form>
                                     :
-                                    'Loading tasks'
-                                }
-                            </>
+                                    <>
+                                        {project.tasks ? 
+                                            project.tasks.length === 0 ?  
+                                                'No tasks' 
+                                                :
+                                                <div className="taskList">
+                                                    {project.tasks.map(task =>
+                                                    {
+                                                        if (!task.completed) {return <Task key={task.id} users={project.users} task={task} getProject={getProjectDetails}/>}
+                                                    })
+                                                    }
+                                                    {project.tasks.map(task =>
+                                                    {
+                                                        if (task.completed) {return <Task key={task.id} users={project.users} task={task} getProject={getProjectDetails}/>}
+                                                    })
+                                                    }
+                                                </div>
+                                            :
+                                            'Loading tasks'
+                                        }
+                                    </>
+                            }
+                            </div>
                         </div>
                     </div>
                     :

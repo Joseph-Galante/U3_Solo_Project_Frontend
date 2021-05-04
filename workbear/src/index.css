@@ -22,14 +22,34 @@ code {
 }
 
 .mainPage {
-  background-image: url(https://singularityhub.com/wp-content/uploads/2019/07/Dark-forest-background.-Karelia-forest-trees-900x506.jpg);
+  background-image: url(https://i.imgur.com/LPEeju6.png);
   background-repeat: no-repeat;
   background-size: contain;
   width: 99%;
-  height: 800px;
+  height: 900px;
   display: flex;
   flex-direction: column;
   align-items: center;
+}
+
+#cancelComment, #cancelTask {
+  background-color: whitesmoke;
+}
+#cancelComment:hover, #cancelTask:hover {
+  background-color: black;
+}
+#writeComment, #addTask {
+  background-color: dodgerblue;
+}
+#writeComment:hover, #addTask:hover {
+  background-color: black;
+}
+
+#assignSelf {
+  color: dodgerblue;
+}
+#assignSelf:hover {
+  color: white;
 }
 
 input {
@@ -50,13 +70,14 @@ input[type=password] {
 }
 input[type=submit] {
   background-color: dodgerblue;
-  color: #fff;
+  color: #000;
   border-radius: 12%;
 }
 input[type=button] {
-  background-color: dodgerblue;
-  color: black;
-  border-radius: 12%;
+  background-color: transparent;
+  color: navy;
+  /* border-radius: 12%; */
+  text-decoration: underline;
 }
 input[type=submit]:hover {
   cursor: pointer;
@@ -66,7 +87,7 @@ input[type=submit]:hover {
 input[type=button]:hover {
   cursor: pointer;
   color: whitesmoke;
-  background-color: #003152;
+  /* background-color: #003152; */
 }
 
 .success {
@@ -98,18 +119,18 @@ nav {
   /* border: 1px solid red; */
   display: flex;
   flex-direction: column;
-  border-top: 5px solid chocolate;
-  border-bottom: 5px solid chocolate;
-  background-color: dodgerblue;
+  background-image: url(https://i.imgur.com/CAUKZUj.png);
+  background-repeat: no-repeat;
+  background-size: contain;
   width: 99%;
-  height: 50px;
+  height: 99px;
 }
 
 .navLeft {
   color: brown;
   position: absolute;
   left: 10px;
-  top: 20px;
+  top: 25px;
   font-size: 20px;
   font-weight: bolder;
 }
@@ -117,7 +138,7 @@ nav {
   color: brown;
   position: absolute;
   right: 10px;
-  top: 20px;
+  top: 25px;
   font-size: 20px;
   font-weight: bolder;
 }
@@ -131,7 +152,9 @@ label {
 a {
   color: whitesmoke;
   text-decoration: none;
-  background-color: chocolate;
+  background-image: url(https://i.imgur.com/McxDsJt.png);
+  background-repeat: no-repeat;
+  background-size: contain;
   padding: 6px;
   margin: 5px;
   border-radius: 8%;
@@ -149,9 +172,6 @@ a {
   display: flex;
   justify-content: center;
   align-items: center;
-  background-image: url(https://singularityhub.com/wp-content/uploads/2019/07/Dark-forest-background.-Karelia-forest-trees-900x506.jpg);
-  background-repeat: no-repeat;
-  background-size: contain;
   width: 99%;
   height: 800px;
   border-radius: 3%;
@@ -260,6 +280,17 @@ a {
   cursor: pointer;
 }
 
+.task {
+  border: none;
+  border-radius: 3%;
+  background-color: black;
+  width: 95%;
+  height: 40px;
+  padding: 10px;
+  display: flex;
+  align-items: center;
+}
+
 .projectsPage, .projectDetailsPage, .taskDetailsPage, .invitePage {
   display: flex;
   justify-content: center;
@@ -293,18 +324,21 @@ input[type=number] {
 
 .projectDetails {
   border: 2px solid whitesmoke;
+  border-radius: 3%;
   width: 90%;
   height: 90%;
   display: flex;
   justify-content: center;
   align-items: center;
+  padding: 10px;
 }
 
 .collabSection {
   border: 2px solid whitesmoke;
+  border-radius: 2%;
 }
 
-.taskDetails {
+.taskSection, .inviteDetails, .taskDetails {
   border: 2px solid whitesmoke;
   border-radius: 2%;
   width: 90%;
@@ -316,10 +350,15 @@ input[type=number] {
   padding: 10px;
 }
 
-#backToProject {
+#backToProject, #backToProjectFromTask {
   background-color: whitesmoke;
+  border-radius: 12%;
+  text-decoration: none;
+  position: relative;
+  right: 40%;
+  z-index: 2;
 }
-#backToProject:hover {
+#backToProject:hover, #backToProjectFromTask:hover {
   background-color: black;
 }
 
@@ -346,4 +385,74 @@ input[type=number] {
 }
 #replyDecline {
   background-color: red;
+}
+
+.comments {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+.commentsBar, .collabBar, .tasksBar {
+  display: flex;
+  justify-content: start;
+  align-items: center;
+}
+
+#commentDescription {
+  font: 20px sans-serif;
+  border: none;
+  border-radius: 3%;
+  resize: none;
+}
+
+.comment {
+  border: 2px solid whitesmoke;
+  padding: 10px;
+  width: 100%;
+  margin: 5px;
+}
+.commentStamp {
+  position: relative;
+  top: -12px;
+  left: -12px;
+  border: 2px solid whitesmoke;
+  width: 109%;
+  text-align: start;
+  text-indent: 10px;
+  display: flex;
+  justify-content: space-evenly;
+}
+.commentStampName {
+  position: relative;
+  left: -40px;
+}
+.commentStampTime {
+  position: relative;
+  right: -30px;
+}
+
+.task {
+  padding: 20px;
+}
+.taskSection {
+  border: 2px solid whitesmoke;
+  border-radius: 3%;
+}
+.taskList {
+  width: 90%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+.taskStamp {
+  position: relative;
+  right: 73px;
+  top: -20px;
+  border-bottom: 2px solid whitesmoke;
+  width: 190%;
+  text-align: start;
+  text-indent: 10px;
+  display: flex;
+  justify-content: space-evenly;
 }

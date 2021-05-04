@@ -76,7 +76,7 @@ const Projects = () =>
                         <input type="text" value={description} placeholder="Description" onChange={(e) => {setDescription(e.target.value)}}/>
                     </div>
                     <div key="projectDueDate">
-                        <label  className="createProjectLabel" htmlFor="projectDueDate">Due Date:</label>
+                        <label  className="createProjectLabel" htmlFor="projectDueDate">Due Date (MM-DD-YY):</label>
                         <span className="dueDateSpan">
                             <input key="dueDateMonth" type="number" value={month} placeholder="MM" min={1} max={12} maxLength={2} onChange={(e) => {setMonth(e.target.value)}}/>
                             <input key="dueDateDay" type="number" value={day} placeholder="DD" min={1} max={31} maxLength={2} onChange={(e) => {setDay(e.target.value)}}/>

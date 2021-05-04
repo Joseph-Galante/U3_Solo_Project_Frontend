@@ -50,7 +50,7 @@ function App() {
         
         {/* ===============  ROUTES  ===============  */}
 
-        <Route exact path="/" render={() => {if (user.id) {return <Redirect to="/profile" />} else { return <Home />}}} />
+        <Route exact path="/" render={() => {return <Home />}} />
 
         <Route exact path="/signup" render={() => {if (user.id) {return <Redirect to="/profile"/>} else {return <Signup setUser={setUser}/>}}}/>
 
