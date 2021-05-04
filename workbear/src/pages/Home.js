@@ -1,10 +1,19 @@
-
+import { useState, useEffect, useContext } from 'react';
+import { MessageContext } from '../contexts/MessageContext';
 
 const Home = () =>
 {
+    // contexts
+    const { displayMessage, clearMessage } = useContext(MessageContext);
+
+    // on component load
+    useEffect(clearMessage, []);
+
     return (
-        <div>
-            <h1 style={{ font: "48px Arial", fontWeight: "bolder" }}>Welcome to WorkBear</h1>
+        <div className="homePage">
+            <div className="welcomeSign">
+                <h1 style={{ fontSize: "48px", fontWeight: "bolder" }}>Welcome to WorkBear</h1>
+            </div>
         </div>
     )
 }
